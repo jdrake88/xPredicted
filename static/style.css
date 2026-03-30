@@ -1,0 +1,716 @@
+/* === Reset & Base === */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-hover: #1c2333;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --border: #30363d;
+    --cl-blue: #2563eb;
+    --el-orange: #ea580c;
+    --ecl-green: #16a34a;
+    --rel-red: #dc2626;
+    --accent: #58a6ff;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+/* === Navbar === */
+.navbar {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: color 0.2s, background 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+}
+
+/* === Layout === */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.season-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+/* === Loading / Error === */
+.loading {
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--text-secondary);
+}
+
+.error {
+    text-align: center;
+    padding: 2rem;
+    color: #f85149;
+    background: rgba(248, 81, 73, 0.1);
+    border-radius: 8px;
+}
+
+/* === Table === */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.standings-table th {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+}
+
+.standings-table th.col-team {
+    text-align: left;
+    padding-left: 0.75rem;
+}
+
+.standings-table td {
+    padding: 0.6rem 0.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.standings-table tr:hover {
+    background: var(--bg-hover);
+}
+
+/* Position indicator stripe */
+.standings-table tr td:first-child {
+    position: relative;
+    font-weight: 600;
+}
+
+.standings-table tr.zone-cl td:first-child {
+    box-shadow: inset 3px 0 0 var(--cl-blue);
+}
+
+.standings-table tr.zone-el td:first-child {
+    box-shadow: inset 3px 0 0 var(--el-orange);
+}
+
+.standings-table tr.zone-ecl td:first-child {
+    box-shadow: inset 3px 0 0 var(--ecl-green);
+}
+
+.standings-table tr.zone-rel td:first-child {
+    box-shadow: inset 3px 0 0 var(--rel-red);
+}
+
+/* Team cell */
+.team-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: left;
+}
+
+.team-crest {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.col-pts {
+    font-weight: 700;
+}
+
+td.col-pts {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* Positive/negative GD colouring */
+.gd-positive {
+    color: #3fb950;
+}
+
+.gd-negative {
+    color: #f85149;
+}
+
+/* === Colour Key === */
+.colour-key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.key-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.key-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.key-swatch.cl { background: var(--cl-blue); }
+.key-swatch.el { background: var(--el-orange); }
+.key-swatch.ecl { background: var(--ecl-green); }
+.key-swatch.rel { background: var(--rel-red); }
+
+/* === Matchday Navigation === */
+.matchday-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.matchday-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    min-width: 140px;
+    text-align: center;
+}
+
+.btn {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+    background: var(--bg-hover);
+    border-color: var(--accent);
+}
+
+.btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* === Fixtures === */
+.fixtures-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.fixture-date-header {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 1rem 0 0.25rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.25rem;
+}
+
+.fixture-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    transition: border-color 0.2s;
+}
+
+.fixture-card:hover {
+    border-color: #444c56;
+}
+
+.fixture-teams {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.fixture-team {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.fixture-team.home-team {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.fixture-team.away-team {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.fixture-team .team-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.fixture-team-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.fixture-team.home-team .fixture-team-info {
+    align-items: flex-end;
+}
+
+.fixture-team.away-team .fixture-team-info {
+    align-items: flex-start;
+}
+
+.fixture-stat {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.fixture-stat-value {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.fixture-centre {
+    text-align: center;
+    min-width: 80px;
+}
+
+.fixture-score {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.fixture-status {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.fixture-time {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* === Prediction Bar === */
+.prediction-bar {
+    display: flex;
+    height: 26px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.prob-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    min-width: 30px;
+    transition: opacity 0.2s;
+}
+
+.prob-segment.prob-highlight {
+    color: #fff;
+}
+
+.home-prob {
+    background: #2563eb;
+}
+
+.draw-prob {
+    background: #6b7280;
+}
+
+.away-prob {
+    background: #dc2626;
+}
+
+/* === Prediction Details === */
+.prediction-details {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.pred-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+}
+
+.pred-label {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.pred-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* === Wide container for probability grid === */
+.container-wide {
+    max-width: 1200px;
+}
+
+.section-heading {
+    font-size: 1.1rem;
+    margin: 2rem 0 0.75rem;
+    color: var(--text-secondary);
+}
+
+.section-heading:first-of-type {
+    margin-top: 0.5rem;
+}
+
+/* === Probability Grid === */
+.prob-grid {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.7rem;
+}
+
+.prob-grid th {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-weight: 600;
+    padding: 0.4rem 0.25rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.65rem;
+    position: sticky;
+    top: 0;
+}
+
+.prob-grid th.prob-team-col {
+    text-align: left;
+    padding-left: 0.5rem;
+    min-width: 90px;
+}
+
+.prob-grid th.prob-pos-col {
+    min-width: 36px;
+}
+
+.prob-grid td {
+    padding: 0.35rem 0.2rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.prob-team-cell {
+    text-align: left;
+    padding-left: 0.5rem;
+    font-weight: 600;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.prob-cell {
+    font-size: 0.65rem;
+    color: var(--text-primary);
+    border-left: 1px solid rgba(48, 54, 61, 0.5);
+}
+
+/* Zone column header highlights */
+.grid-zone-cl {
+    border-bottom-color: rgba(37, 99, 235, 0.2);
+}
+
+.grid-zone-el {
+    border-bottom-color: rgba(234, 88, 12, 0.2);
+}
+
+.grid-zone-ecl {
+    border-bottom-color: rgba(22, 163, 74, 0.2);
+}
+
+.grid-zone-rel {
+    border-bottom-color: rgba(220, 38, 38, 0.2);
+}
+
+/* === European Qualification Table === */
+.euro-cl {
+    color: var(--cl-blue);
+    font-weight: 600;
+}
+
+.euro-el {
+    color: var(--el-orange);
+    font-weight: 600;
+}
+
+.euro-ecl {
+    color: var(--ecl-green);
+    font-weight: 600;
+}
+
+.euro-rel {
+    color: var(--rel-red);
+    font-weight: 600;
+}
+
+/* === Sortable Table Headers === */
+.sortable-th {
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s;
+}
+
+.sortable-th:hover {
+    color: var(--text-primary);
+}
+
+.sort-arrow {
+    font-size: 0.6rem;
+    margin-left: 0.25rem;
+    opacity: 0.3;
+}
+
+.sortable-th.sort-active .sort-arrow {
+    opacity: 1;
+    color: var(--accent);
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        width: 100%;
+    }
+
+    .nav-links a {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .container {
+        padding: 1rem 0.5rem;
+    }
+
+    .container-wide {
+        max-width: 100%;
+        padding: 1rem 0.25rem;
+    }
+
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    /* Standings table — hide GF/GA on mobile, tighten padding */
+    .standings-table {
+        font-size: 0.8rem;
+    }
+
+    .standings-table th,
+    .standings-table td {
+        padding: 0.5rem 0.3rem;
+    }
+
+    .team-crest {
+        width: 16px;
+        height: 16px;
+    }
+
+    .team-cell {
+        gap: 0.3rem;
+    }
+
+    .colour-key {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    /* Fixtures — stack teams vertically on narrow screens */
+    .fixture-teams {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+        text-align: center;
+    }
+
+    .fixture-team.home-team,
+    .fixture-team.away-team {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .fixture-team.home-team .fixture-team-info,
+    .fixture-team.away-team .fixture-team-info {
+        align-items: center;
+    }
+
+    .fixture-team .team-name {
+        font-size: 0.85rem;
+    }
+
+    .fixture-stat {
+        font-size: 0.7rem;
+    }
+
+    .fixture-centre {
+        min-width: unset;
+        order: -1;
+        padding-bottom: 0.25rem;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 0.25rem;
+    }
+
+    .fixture-score {
+        font-size: 1.1rem;
+    }
+
+    .prediction-details {
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    .prediction-bar {
+        font-size: 0.65rem;
+        height: 24px;
+    }
+
+    .matchday-nav {
+        gap: 0.75rem;
+    }
+
+    .btn {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    /* Probability grid — smaller cells for 20 columns */
+    .prob-grid {
+        font-size: 0.55rem;
+    }
+
+    .prob-grid th {
+        padding: 0.3rem 0.1rem;
+        font-size: 0.5rem;
+    }
+
+    .prob-grid th.prob-pos-col {
+        min-width: 22px;
+    }
+
+    .prob-team-cell {
+        font-size: 0.6rem;
+        min-width: 55px;
+        padding-left: 0.25rem;
+    }
+
+    /* Hide badges in probability grid on mobile to save space */
+    .prob-team-cell .grid-crest {
+        display: none;
+    }
+
+    .prob-cell {
+        font-size: 0.5rem;
+        padding: 0.25rem 0.1rem;
+    }
+
+    /* Euro qualification table — abbreviate column headers via smaller font */
+    .sortable-th {
+        font-size: 0.65rem;
+        padding: 0.5rem 0.25rem;
+    }
+
+    .sort-arrow {
+        display: none;
+    }
+
+    /* Season predictor table */
+    .standings-table .col-num {
+        font-size: 0.75rem;
+    }
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PL Predictor — Premier League Match Predictions & xG 2025/26</title>
+    <meta name="description" content="Premier League 2025/26 match predictions with expected goals (xG), win probabilities and clean sheet chances for every fixture and matchday.">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">xPredicted</div>
+        <div class="nav-links">
+            <a href="/">Table</a>
+            <a href="/fixtures" class="active">Predictions</a>
+            <a href="/predictions">Season Predictor</a>
+            <a href="/probabilities">Probabilities</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>Fixtures & Predictions</h1>
+
+        <div class="matchday-nav">
+            <button id="btn-prev" class="btn" onclick="changeMatchday(-1)">← Previous</button>
+            <span class="matchday-label" id="matchday-label">Matchweek —</span>
+            <button id="btn-next" class="btn" onclick="changeMatchday(1)">Next →</button>
+        </div>
+
+        <div id="loading" class="loading">Loading fixtures...</div>
+        <div id="error" class="error" style="display:none;"></div>
+
+        <div id="fixtures-list" class="fixtures-list" style="display:none;"></div>
+    </main>
+
+    <script src="/static/fixtures.js"></script>
+</body>
+</html>

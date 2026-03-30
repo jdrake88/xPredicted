@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+.vercel/
+node_modules/
+venv/
+.DS_Store
+
+# Old model files (superseded by .pkl files)
+*.joblib

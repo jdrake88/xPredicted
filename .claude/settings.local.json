@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(python3 -c \"import requests; print\\(''requests OK''\\)\")",
+      "Bash(pip3 install:*)",
+      "Bash(python3 -m venv venv)",
+      "Bash(source venv/bin/activate)",
+      "Bash(python3 prediction_engine.py)",
+      "Bash(python3 -c \":*)",
+      "Bash(python3:*)",
+      "Bash(git -C /Users/james/Documents/PL-Predictor-Model status)"
+    ]
+  }
+}

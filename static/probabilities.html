@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PL Predictor — Premier League Finish Probabilities 2025/26</title>
+    <meta name="description" content="Premier League finish probabilities for 2025/26 showing each team's chance of every position plus Champions League, Europa League and relegation odds.">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">xPredicted</div>
+        <div class="nav-links">
+            <a href="/">Table</a>
+            <a href="/fixtures">Predictions</a>
+            <a href="/predictions">Season Predictor</a>
+            <a href="/probabilities" class="active">Probabilities</a>
+        </div>
+    </nav>
+
+    <main class="container container-wide">
+        <h1>Position Finish Probabilities</h1>
+        <p class="season-label">Based on 10,000 season simulations — each row adds up to 100%</p>
+
+        <div id="loading" class="loading">Running simulations... this may take up to 30 seconds</div>
+        <div id="error" class="error" style="display:none;"></div>
+
+        <div id="content" style="display:none;">
+            <h2 class="section-heading">Full Position Grid</h2>
+            <div class="table-wrapper">
+                <table class="prob-grid" id="prob-grid">
+                </table>
+            </div>
+
+            <h2 class="section-heading">Qualification & Relegation Chances</h2>
+            <div class="table-wrapper">
+                <table class="standings-table" id="euro-table">
+                    <thead id="euro-head">
+                    </thead>
+                    <tbody id="euro-body">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="colour-key">
+                <div class="key-item">
+                    <span class="key-swatch cl"></span>
+                    Champions League (1st – 5th)
+                </div>
+                <div class="key-item">
+                    <span class="key-swatch el"></span>
+                    Europa League (6th – 7th)
+                </div>
+                <div class="key-item">
+                    <span class="key-swatch ecl"></span>
+                    Conference League (8th)
+                </div>
+                <div class="key-item">
+                    <span class="key-swatch rel"></span>
+                    Relegation (18th – 20th)
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/static/probabilities.js"></script>
+</body>
+</html>

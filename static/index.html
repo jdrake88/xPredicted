@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PL Predictor — Live Premier League Table 2025/26</title>
+    <meta name="description" content="Live Premier League standings for 2025/26 with points, goal difference, European qualification spots and relegation zone tracking updated every matchday.">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">xPredicted</div>
+        <div class="nav-links">
+            <a href="/" class="active">Table</a>
+            <a href="/fixtures">Predictions</a>
+            <a href="/predictions">Season Predictor</a>
+            <a href="/probabilities">Probabilities</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1>Premier League Table</h1>
+        <p class="season-label" id="season-label"></p>
+
+        <div id="loading" class="loading">Loading standings...</div>
+        <div id="error" class="error" style="display:none;"></div>
+
+        <div class="table-wrapper" id="table-wrapper" style="display:none;">
+            <table class="standings-table">
+                <thead>
+                    <tr>
+                        <th class="col-pos">#</th>
+                        <th class="col-team">Team</th>
+                        <th class="col-num">P</th>
+                        <th class="col-num">W</th>
+                        <th class="col-num">D</th>
+                        <th class="col-num">L</th>
+                        <th class="col-num">GD</th>
+                        <th class="col-num col-pts">Pts</th>
+                    </tr>
+                </thead>
+                <tbody id="standings-body">
+                </tbody>
+            </table>
+
+            <div class="colour-key">
+                <div class="key-item">
+                    <span class="key-swatch cl"></span>
+                    Champions League (1st – 5th)
+                </div>
+                <div class="key-item">
+                    <span class="key-swatch el"></span>
+                    Europa League (6th – 7th)
+                </div>
+                <div class="key-item">
+                    <span class="key-swatch ecl"></span>
+                    Conference League (8th)
+                </div>
+                <div class="key-item">
+                    <span class="key-swatch rel"></span>
+                    Relegation (18th – 20th)
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
