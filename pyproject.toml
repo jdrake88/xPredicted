@@ -1,0 +1,28 @@
+[project]
+name = "xpredicted"
+version = "1.0.0"
+requires-python = ">=3.9"
+dependencies = [
+    "flask==3.1.0",
+    "requests==2.32.3",
+    "python-dotenv==1.1.0",
+    "xgboost==2.1.4",
+    "scikit-learn==1.6.1",
+    "numpy==2.2.3",
+    "scipy==1.15.2",
+    "joblib==1.4.2",
+]
+
+[tool.uv]
+override-dependencies = [
+    "nvidia-nccl-cu12; python_version < '0'",
+    "nvidia-cuda-runtime-cu12; python_version < '0'",
+    "nvidia-cuda-cupti-cu12; python_version < '0'",
+    "nvidia-cublas-cu12; python_version < '0'",
+    "nvidia-curand-cu12; python_version < '0'",
+    "nvidia-cusolver-cu12; python_version < '0'",
+    "nvidia-cusparse-cu12; python_version < '0'",
+    "nvidia-cufft-cu12; python_version < '0'",
+    "nvidia-cudnn-cu12; python_version < '0'",
+    "nvidia-nvjitlink-cu12; python_version < '0'",
+]
