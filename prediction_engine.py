@@ -14,12 +14,10 @@ import time
 from collections import defaultdict
 from datetime import datetime
 
-import aiohttp
 import numpy as np
 import requests
 from scipy.stats import poisson
 from dotenv import load_dotenv
-from understat import Understat
 
 load_dotenv()
 
